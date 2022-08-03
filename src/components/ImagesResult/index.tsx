@@ -1,5 +1,6 @@
 import { ImagesResultProps } from './interfaces'
 import ImageCard from './ImageCard'
+import ResultHeader from './ResultHeader'
 
 function ImagesResult({ data, isError, isLoading }: ImagesResultProps) {
   if (!data?.hits.length && !isLoading && !isError) {
@@ -18,13 +19,18 @@ function ImagesResult({ data, isError, isLoading }: ImagesResultProps) {
   }
   if (isLoading) return <h3>Loading...</h3>
   return (
-    <ul className="flex w-full flex-wrap items-stretch justify-center gap-3">
-      {data?.hits.map((image) => (
-        <li key={image.id}>
-          <ImageCard imageItem={image} />
-        </li>
-      ))}
-    </ul>
+    <>
+      {data?.hits && (
+        <ResultHeader total={data.total} totalHits={data.totalHits} />
+      )}
+      <ul className="flex w-full flex-wrap items-stretch justify-center gap-3">
+        {data?.hits.map((image) => (
+          <li key={image.id}>
+            <ImageCard imageItem={image} />
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
 
