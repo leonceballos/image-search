@@ -16,11 +16,13 @@ export interface ImageCardPros {
 }
 
 export interface ImagesResultProps {
-  data: {
-    hits: Image[]
-    total: number
-    totalHits: number
-  }
+  data:
+    | {
+        hits: Image[]
+        total: number
+        totalHits: number
+      }
+    | undefined
   isLoading: boolean
   isError: boolean
 }

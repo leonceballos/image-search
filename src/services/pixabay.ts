@@ -8,7 +8,7 @@ const pixabayInstance = axios.create({
 })
 
 export async function getImagesByQuery(params: { searchText: string }) {
-  if (!params.searchText) return { hits: [] }
+  if (!params.searchText) return { hits: [], total: 0, totalHits: 0 }
   try {
     const response = await pixabayInstance.get('/', {
       params: {
