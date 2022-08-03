@@ -17,7 +17,7 @@ then, in the root folder run the commands:
 npm install && npm run dev
 ```
 
-Open [http:http://127.0.0.1:5174/](http://127.0.0.1:5174/) with your browser to see the result
+Open [http:http://127.0.0.1:5174/](http://127.0.0.1:5174/) or the full url you will see in the terminal with your browser to see the result
 
 ## Decistions/tradeoffs
 
