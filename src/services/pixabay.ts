@@ -7,15 +7,18 @@ const pixabayInstance = axios.create({
   }
 })
 
-export async function getImagesByQuery(params: { searchText: string }) {
+export async function getImagesByQuery(params: {
+  searchText: string
+  pageNumber: number
+}) {
   if (!params.searchText) return { hits: [], total: 0, totalHits: 0 }
   try {
     const response = await pixabayInstance.get('/', {
       params: {
         q: params.searchText,
         image_type: 'photo',
-        page: 1,
-        per_page: 10
+        page: params.pageNumber,
+        per_page: 30
       }
     })
     return response.data

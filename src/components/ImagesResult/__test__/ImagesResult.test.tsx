@@ -10,6 +10,7 @@ describe('ImagesResult', () => {
         isError={false}
         isLoading={false}
         data={{ hits: [], total: 0, totalHits: 0 }}
+        lastItemRef={undefined}
       />
     )
     expect(
@@ -17,11 +18,25 @@ describe('ImagesResult', () => {
     ).toBeInTheDocument()
   })
   test('shows loading state', () => {
-    render(<ImagesResult isError={false} isLoading data={undefined} />)
+    render(
+      <ImagesResult
+        isError={false}
+        isLoading
+        data={undefined}
+        lastItemRef={undefined}
+      />
+    )
     expect(screen.getByText('Loading...')).toBeInTheDocument()
   })
   test('shows error message', () => {
-    render(<ImagesResult isError isLoading={false} data={undefined} />)
+    render(
+      <ImagesResult
+        isError
+        isLoading={false}
+        data={undefined}
+        lastItemRef={undefined}
+      />
+    )
     expect(
       screen.getByText('There was and error with the search. :(')
     ).toBeInTheDocument()
@@ -32,6 +47,7 @@ describe('ImagesResult', () => {
         isError={false}
         isLoading={false}
         data={{ hits: mockData, total: 3, totalHits: 3 }}
+        lastItemRef={undefined}
       />
     )
     expect(screen.getAllByRole('listitem')).toHaveLength(3)

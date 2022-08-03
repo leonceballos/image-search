@@ -2,7 +2,12 @@ import { ImagesResultProps } from './interfaces'
 import ImageCard from './ImageCard'
 import ResultHeader from './ResultHeader'
 
-function ImagesResult({ data, isError, isLoading }: ImagesResultProps) {
+function ImagesResult({
+  data,
+  isError,
+  isLoading,
+  lastItemRef
+}: ImagesResultProps) {
   if (!data?.hits.length && !isLoading && !isError) {
     return (
       <h2 className="rounded-md bg-gray-200 p-5">
@@ -17,19 +22,20 @@ function ImagesResult({ data, isError, isLoading }: ImagesResultProps) {
       </h3>
     )
   }
-  if (isLoading) return <h3>Loading...</h3>
+
   return (
     <>
-      {data?.hits && (
+      {!!data?.hits.length && (
         <ResultHeader total={data.total} totalHits={data.totalHits} />
       )}
       <ul className="flex w-full flex-wrap items-stretch justify-center gap-3">
         {data?.hits.map((image) => (
-          <li key={image.id}>
+          <li key={image.id} ref={lastItemRef}>
             <ImageCard imageItem={image} />
           </li>
         ))}
       </ul>
+      {isLoading && <h3>Loading...</h3>}
     </>
   )
 }

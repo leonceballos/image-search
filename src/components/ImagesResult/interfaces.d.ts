@@ -1,3 +1,5 @@
+import { Ref } from 'react'
+
 interface Image {
   id: number
   type: string
@@ -25,4 +27,5 @@ export interface ImagesResultProps {
     | undefined
   isLoading: boolean
   isError: boolean
+  lastItemRef: Ref | undefined
 }

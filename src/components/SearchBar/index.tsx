@@ -1,9 +1,9 @@
 import { SearchIcon } from '@heroicons/react/solid'
-import { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
 
 interface SearchBarProps {
   placeholder?: string
-  onSearch: Dispatch<SetStateAction<string>>
+  onSearch: CallableFunction
 }
 
 function SearchBar({ placeholder, onSearch }: SearchBarProps) {
