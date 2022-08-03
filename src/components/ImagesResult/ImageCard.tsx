@@ -15,7 +15,10 @@ export default function ImageCard({ imageItem }: ImageCardPros) {
         className="min-h-[100px] rounded-md"
       />
       <div className="invisible absolute top-0 h-full w-full rounded-md bg-black opacity-30 group-hover:visible" />
-      <div className="invisible absolute top-0 flex h-full w-full flex-col justify-between p-1 text-sm text-white group-hover:visible">
+      <div
+        data-testid="image-card-info"
+        className="invisible absolute top-0 flex h-full w-full flex-col justify-between p-1 text-sm text-white group-hover:visible"
+      >
         <span className="font-bold">{imageItem.tags}</span>
         <div className="flex flex-wrap gap-1 text-sm">
           <div className="flex items-center space-x-1">
